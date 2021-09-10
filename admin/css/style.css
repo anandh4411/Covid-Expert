@@ -1,0 +1,51 @@
+.stuffs{
+    margin-top: 60px;
+    padding: 10px;
+}
+.admin-title{
+    letter-spacing: -1px;
+    margin-right: 30px;
+    font-weight:700;
+    margin-top: 8px;
+}
+.card-tile{
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #3f3e3c;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+canvas{
+    height: 50px !important;
+    width: 200px !important;
+}
+.graph-tile{
+    margin-left: 20px;
+}
+.vaccine, .quarantine{
+    padding: 20px;
+}
+.vaccine-tile{
+    align-items: center;
+    text-align: center;
+}
+.btn{
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(235, 44, 66);
+    color: white;
+    margin-top: 25px;
+}
+.manage-btn{
+    margin-top: 25px;
+    margin-left: 20px;
+    border-radius: 15px;
+    width: 30%;
+    padding: 10px;
+    background-color: white;
+    color: black;
+}
+.map-thumb{
+    overflow: scroll;
+    height: 67%;
+}
