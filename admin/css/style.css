@@ -1,3 +1,25 @@
+a {
+  text-decoration: none;
+  color: white !important;
+}
+.container {
+  position: relative;
+}
+.form-control {
+  color: #6c757d !important;
+}
+.card {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 320px;
+  background-color: rgb(46, 44, 41);
+  padding: 20px;
+  border-radius: 15px;
+  display: inline-block;
+  vertical-align: top;
+}
 .stuffs {
   margin-top: 60px;
   padding: 10px;
@@ -66,21 +88,6 @@ body {
   background-color: black !important;
   width: 100%;
   overflow: hidden;
-}
-.container {
-  position: relative;
-}
-.login-card {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  margin-top: 320px;
-  background-color: rgb(46, 44, 41);
-  padding: 20px;
-  border-radius: 15px;
-  display: inline-block;
-  vertical-align: top;
 }
 .form-control {
   background-color: rgb(77, 75, 75);
