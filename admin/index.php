@@ -164,7 +164,9 @@
                             <div class="map-thumb">
                                 <?php echo $map; ?>
                             </div>
-                            <button class="manage-btn">Manage</button>
+                            <button class="manage-btn">
+                                <a href="pages/containment-zone.html">Manage</a>
+                            </button>
                             <i class="fas fa-arrow-right"></i>
                         </div>
                     </div>
@@ -172,12 +174,16 @@
                         <div class="col card-tile vaccine">
                             <h2 class="text-center" style="color:rgb(235, 44, 66);">Vaccination</h2>
                             <h4 class="text-center">Manage all vaccination services.</h4>
-                            <button class="btn">Manage</button>
+                            <button class="btn">
+                            <a href="pages/vaccination.html">Manage</a>
+                            </button>
                         </div>
                         <div class="col card-tile quarantine">
                             <h2 class="text-center" style="color:rgb(0, 171, 255);">Quarantine Centre</h2>
                             <h4 class="text-center">Manage all quarantine services.</h4>
-                            <button style="background-color: rgb(0, 171, 255);" class="btn">Manage</button>
+                            <button style="background-color: rgb(0, 171, 255);" class="btn">
+                                <a href="pages/quarantine.html">Manage</a>
+                            </button>
                         </div>
                     </div>
                 </div>
