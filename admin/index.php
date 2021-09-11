@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="manage-btn">Manage</button>
+                            <button style="background-color: rgb(0, 171, 255);" class="manage-btn">Manage</button>
                             <i class="fas fa-arrow-right"></i>
                         </div>
                         <div style="height: 380px;" class="col card-tile">
