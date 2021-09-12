@@ -1,4 +1,4 @@
-<?php include 'php/map.php'; ?>
+<?php include 'php/get.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -149,7 +149,11 @@
                     <h2>Affected Areas</h2>
                     <a class="col-lg-8" href="pages/map-page.php">
                     <div class="map-div">
-                        <?php echo $map; ?>
+                        <?php 
+                            for($i=0; $i < (count($row))-1; $i++){
+                                echo $row[$i];
+                            } 
+                        ?>
                     </div>
                     </a>
                     <div class="col-lg-4">

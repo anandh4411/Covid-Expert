@@ -1,4 +1,5 @@
-<?php include '../php/map.php'; ?>
+<?php include '../maps/map.php'; ?>
+<?php include '../php/get.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -162,10 +163,14 @@
                         <div style="height: 380px;" class="col card-tile">
                             <h3 style="margin-left: 20px; color:rgb(235, 44, 66);">Containment Zone</h3>
                             <div class="map-thumb">
-                                <?php echo $map; ?>
+                                <?php 
+                                    for($i=0; $i < (count($row))-1; $i++){
+                                    echo $row[$i];
+                                    } 
+                                ?>
                             </div>
                             <button class="manage-btn">
-                                <a href="pages/containment-zone.html">Manage</a>
+                                <a href="pages/containment-zone.php">Manage</a>
                             </button>
                             <i class="fas fa-arrow-right"></i>
                         </div>

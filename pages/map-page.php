@@ -1,4 +1,4 @@
-<?php include '../php/map.php'; ?>
+<?php include '../php/get.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -125,7 +125,11 @@
                 <button class="zoom-in btn btn-primary" onclick="zoomin()">+</button>
                 <button class="zoom-out btn btn-primary" onclick="zoomout()">-</button>
                 <div class="main-map">
-                    <?php echo $map; ?>
+                <?php 
+                    for($i=0; $i < (count($row))-1; $i++){
+                        echo $row[$i];
+                    } 
+                ?>
                 </div>
             </div>
             <!--Body End-->

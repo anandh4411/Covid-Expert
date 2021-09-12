@@ -139,3 +139,26 @@ canvas {
   border-radius: 10px;
 }
 /* Manage Quarantine Centre End */
+
+/* Manage Containment Zones */
+.mapdiv {
+  padding: 30px;
+  overflow: scroll;
+  border-radius: 10px !important;
+}
+svg {
+  width: 90%;
+  height: auto;
+}
+.btn-div {
+  background-color: rgb(77, 75, 75);
+  padding: 8px;
+  border-radius: 10px;
+  position: relative;
+  justify-content: center;
+  display: flex;
+}
+.color-btn {
+  border-radius: 8px;
+}
+/* Manage Containment Zones End */
