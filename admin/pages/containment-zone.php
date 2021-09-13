@@ -43,6 +43,7 @@
                 <button id="blue-zone" class="btn-primary color-btn">Blue Zone</button>
               </div>
               <form action="../../php/post.php" method="post">
+                <input id="map_post" type="text" name="post" hidden value="map_post" />
                 <input id="map_code" type="text" name="map_code" hidden />
                 <input
                   style="width: 100%"

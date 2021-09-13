@@ -12,7 +12,8 @@ a {
 .container {
   position: relative;
 }
-.form-control {
+.form-control,
+.form-select {
   color: #6c757d !important;
 }
 .card {
@@ -137,6 +138,17 @@ canvas {
   margin-top: 5%;
   padding: 15px !important;
   border-radius: 10px;
+}
+.form-select {
+  background-color: rgb(77, 75, 75);
+  border: 0;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+.form-select:focus {
+  border-color: #86b6fe00;
+  outline: 0;
+  box-shadow: 0 0 0 0;
 }
 /* Manage Quarantine Centre End */
 

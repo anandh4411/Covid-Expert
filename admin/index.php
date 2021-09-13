@@ -187,7 +187,7 @@
                             <h2 class="text-center" style="color:rgb(0, 171, 255);">Quarantine Centre</h2>
                             <h4 class="text-center">Manage all quarantine services.</h4>
                             <button style="background-color: rgb(0, 171, 255);" class="btn">
-                                <a href="pages/quarantine.html">Manage</a>
+                                <a href="pages/quarantine.php">Manage</a>
                             </button>
                         </div>
                     </div>
