@@ -1,4 +1,3 @@
-<?php include '../php/map.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +9,7 @@
     <link rel="stylesheet" href="/covidexpert/css/all.min.css">
     <link rel="stylesheet" href="/covidexpert/css/bootstrap.min.css">
     <link rel="stylesheet" href="/covidexpert/css/style.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link href="/covidexpert/img/virus.png" rel="icon" type="image/png">
 </head>
 
@@ -128,63 +127,75 @@
             <div class="container">
                 <div class="stuffs">
                     <div class="row">
-
-                        <div class="col card-tile">
-                            <h3 style="margin-left: 20px; color:rgb(0, 171, 255);">Covid Cases</h3>
-                            <div style="margin-bottom: 30px !important;" class="row">
-                                <div class="col">
-                                    <div class="col graph-tile">
-                                        <small>Tested</small>
-                                        <h2>1,982</h2>
-                                        <canvas id="tested"></canvas>
-                                    </div>
-                                    <div class="col graph-tile">
-                                        <small>Confirmed</small>
-                                        <h2>674</h2>
-                                        <canvas id="confirmed"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col graph-tile">
-                                    <div class="col">
-                                        <small>Recovery</small>
-                                        <h2>1,437</h2>
-                                        <canvas id="recovery"></canvas>
-                                    </div>
-                                    <div class="col graph-tile">
-                                        <small>Death</small>
-                                        <h2>34</h2>
-                                        <canvas id="death"></canvas>
-                                    </div>
-                                </div>
-                            </div>
-                            <a  href="pages/covid-cases.php" class="manage-btn">Manage</a>
-                            <i class="fas fa-arrow-right"></i>
+                        <div class="col-md-5 covid-case card-tile">
+                            <?php
+                                include '../php/db.php';
+                                $id = $_GET["id"];
+                                $query = "SELECT * FROM vaccination_centre WHERE id=$id";
+                                $result = mysqli_query($connect, $query);
+                                while($row = mysqli_fetch_array($result)){
+                                    echo '<form method="post" action="../php/vaccination/update-vaccination-centre.php">
+                                            <h3>Update Vaccination Centre</h3>
+                                            <input name="id" hidden value="'.$id.'" />
+                                            <div class="form-group">
+                                                <input value="'.$row["centre_id"].'" name="centre_id" type="number" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Enter Centre ID">
+                                            </div>
+                                            <div class="form-group">
+                                                <input value="'.$row["name"].'" name="name" type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Enter Name">
+                                            </div>
+                                            <div class="form-group">
+                                                <input value="'.$row["location"].'" name="location" type="text" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Enter Location">
+                                            </div>
+                                            <div class="form-group">
+                                                <select name="vaccine" class="form-control" id="exampleFormControlSelect1">
+                                                    <option selected>'.$row["vaccine"].'</option>
+                                                    <option>Covishield</option>
+                                                    <option>Covaxin</option>
+                                                    <option>Sputnik V</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <input value="'.$row["slots"].'" name="slots" type="number" class="form-control" id="exampleInputPassword1"
+                                                    placeholder="Enter Number of Slots Available">
+                                            </div>
+                                            <input class="btn btn-primary" type="submit">
+                                        </form>';
+                                        }
+                            ?>
                         </div>
-
-                        <div style="height: 380px;" class="col card-tile">
-                            <h3 style="margin-left: 20px; color:rgb(235, 44, 66);">Containment Zone</h3>
-                            <div class="map-thumb">
-                                <?php echo $map; ?>
-                            </div>
-                            <button class="manage-btn">Manage</button>
-                            <i class="fas fa-arrow-right"></i>
+                        <div style="margin-left: 90px;" class="col-md-5 case-table card-tile"></div>
+                        <div class="col-md-8 case-table card-tile">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Centre ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Location</th>
+                                    <th scope="col">Available Slots</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    include '../php/db.php';
+                                    $query = "SELECT * FROM vaccination_centre";
+                                    $result = mysqli_query($connect, $query);
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo '<tr>
+                                                <th scope="row">'.$row["centre_id"].'</th>
+                                                <td>'.$row["name"].'</td>
+                                                <td>'.$row["location"].'</td>
+                                                <td>'.$row["slots"].'</td>
+                                                <td><a href="update-vaccination.php?id='.$row["id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Update</a></td>
+                                                <td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0;" class="btn btn-danger">Delete</a></td>
+                                            </tr>';
+                                    }
+                                ?>
+                                </tbody>
+                              </table>
                         </div>
-
-                    </div>
-                    <div class="row">
-
-                        <div class="col card-tile vaccine">
-                            <h2 class="text-center" style="color:rgb(235, 44, 66);">Vaccination</h2>
-                            <h4 class="text-center">Manage all vaccination services.</h4>
-                            <a href="pages/vaccination.php" class="btn">Manage</a>
-                        </div>
-
-                        <div class="col card-tile quarantine">
-                            <h2 class="text-center" style="color:rgb(0, 171, 255);">Quarantine Centre</h2>
-                            <h4 class="text-center">Manage all quarantine services.</h4>
-                            <button style="background-color: rgb(0, 171, 255);" class="btn">Manage</button>
-                        </div>
-
                     </div>
                 </div>
             </div>
