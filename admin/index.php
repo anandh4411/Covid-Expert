@@ -43,6 +43,7 @@
         </div>
     </nav>
     <!--NavBar End-->
+
     <!--Main-->
     <div class="row">
         <div class="col-lg-1">
@@ -121,14 +122,16 @@
             </div>
             <!--SideBar End-->
         </div>
+
         <div class="col-lg-11">
             <!--Body-->
             <div class="container">
                 <div class="stuffs">
                     <div class="row">
+
                         <div class="col card-tile">
                             <h3 style="margin-left: 20px; color:rgb(0, 171, 255);">Covid Cases</h3>
-                            <div class="row">
+                            <div style="margin-bottom: 30px !important;" class="row">
                                 <div class="col">
                                     <div class="col graph-tile">
                                         <small>Tested</small>
@@ -154,9 +157,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="manage-btn">Manage</button>
+                            <a  href="pages/covid-cases.html" class="manage-btn">Manage</a>
                             <i class="fas fa-arrow-right"></i>
                         </div>
+
                         <div style="height: 380px;" class="col card-tile">
                             <h3 style="margin-left: 20px; color:rgb(235, 44, 66);">Containment Zone</h3>
                             <div class="map-thumb">
@@ -165,18 +169,22 @@
                             <button class="manage-btn">Manage</button>
                             <i class="fas fa-arrow-right"></i>
                         </div>
+
                     </div>
                     <div class="row">
+
                         <div class="col card-tile vaccine">
                             <h2 class="text-center" style="color:rgb(235, 44, 66);">Vaccination</h2>
                             <h4 class="text-center">Manage all vaccination services.</h4>
                             <button class="btn">Manage</button>
                         </div>
+
                         <div class="col card-tile quarantine">
                             <h2 class="text-center" style="color:rgb(0, 171, 255);">Quarantine Centre</h2>
                             <h4 class="text-center">Manage all quarantine services.</h4>
                             <button style="background-color: rgb(0, 171, 255);" class="btn">Manage</button>
                         </div>
+
                     </div>
                 </div>
             </div>

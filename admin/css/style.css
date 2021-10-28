@@ -49,3 +49,32 @@ canvas{
     overflow: scroll;
     height: 67%;
 }
+a{
+    text-decoration: none !important;
+}
+.navbar .btn-search {
+    display: none;
+}
+.covid-case{
+    padding: 30px;
+}
+.covid-case .btn{
+    margin-top: 20px;
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgb(235, 44, 66);
+    color: white;
+    margin-top: 25px;
+    border-color: rgba(255, 255, 255, 0);
+}
+form .form-control{
+    background-color: rgb(77, 75, 75);
+    border: none;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+}
+.case-table{
+    overflow: scroll;
+}
