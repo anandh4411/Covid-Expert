@@ -128,7 +128,7 @@
                 <div class="stuffs">
                     <div class="row">
                         <div class="col-md-5 covid-case card-tile">
-                            <form action="">
+                            <form method="post" action="../php/covid-cases/add-covid-case.php">
                                 <div class="form-group">
                                     <input name="date" type="date" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Date">
@@ -165,14 +165,21 @@
                                   </tr>
                                 </thead>
                                 <tbody>
-                                  <tr>
-                                    <th scope="row">1</th>
-                                    <td>23/12/2013</td>
-                                    <td>23435</td>
-                                    <td>4563</td>
-                                    <td>45643</td>
-                                    <td>354</td>
-                                  </tr>
+                                <?php
+                                    include '../php/db.php';
+                                    $query = "SELECT * FROM covid_cases";
+                                    $result = mysqli_query($connect, $query);
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo '<tr>
+                                                <th scope="row">'.$row["id"].'</th>
+                                                <td>'.$row["date"].'</td>
+                                                <td>'.$row["tested"].'</td>
+                                                <td>'.$row["confirmed"].'</td>
+                                                <td>'.$row["recovery"].'</td>
+                                                <td>'.$row["death"].'</td>
+                                            </tr>';
+                                    }
+                                ?>
                                 </tbody>
                               </table>
                         </div>

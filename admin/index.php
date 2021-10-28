@@ -157,7 +157,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a  href="pages/covid-cases.html" class="manage-btn">Manage</a>
+                            <a  href="pages/covid-cases.php" class="manage-btn">Manage</a>
                             <i class="fas fa-arrow-right"></i>
                         </div>
 
