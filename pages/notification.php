@@ -34,7 +34,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Vaccine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Donation</a>
+                        <a class="nav-link active" aria-current="page" href="#">Notification</a>
                     </li>
                 </ul>
             </div>
@@ -121,57 +121,32 @@
         </div>
         <div class="col-lg-11">
             <!--Body-->
-            <div class="container">
-                <div class="vaccine-form-card" style="width: 25rem; margin-top: 70px;">
-                    <form action="../php/vaccination/book-vaccine.php" method="post">
-                        <div class="syringe">
-                            <svg class="svg-inline--fa fa-syringe fa-w-16" aria-hidden="true" focusable="false"
-                                data-prefix="fas" data-icon="syringe" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 512" data-fa-i2svg="">
-                                <path fill="#00ABFF"
-                                    d="M201.5 174.8l55.7 55.8c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0l-55.7-55.8-45.3 45.3 55.8 55.8c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0L111 265.2l-26.4 26.4c-17.3 17.3-25.6 41.1-23 65.4l7.1 63.6L2.3 487c-3.1 3.1-3.1 8.2 0 11.3l11.3 11.3c3.1 3.1 8.2 3.1 11.3 0l66.3-66.3 63.6 7.1c23.9 2.6 47.9-5.4 65.4-23l181.9-181.9-135.7-135.7-64.9 65zm308.2-93.3L430.5 2.3c-3.1-3.1-8.2-3.1-11.3 0l-11.3 11.3c-3.1 3.1-3.1 8.2 0 11.3l28.3 28.3-45.3 45.3-56.6-56.6-17-17c-3.1-3.1-8.2-3.1-11.3 0l-33.9 33.9c-3.1 3.1-3.1 8.2 0 11.3l17 17L424.8 223l17 17c3.1 3.1 8.2 3.1 11.3 0l33.9-34c3.1-3.1 3.1-8.2 0-11.3l-73.5-73.5 45.3-45.3 28.3 28.3c3.1 3.1 8.2 3.1 11.3 0l11.3-11.3c3.1-3.2 3.1-8.2 0-11.4z">
-                                </path>
-                            </svg>
+            <?php
+            include '../php/db.php';
+            $query = "SELECT * FROM vaccine_booking WHERE user_id = $user_id";
+            $result = mysqli_query($connect, $query);
+            if ($result){
+                while($row = mysqli_fetch_array($result)){
+                    if($row["alloted"] == 'true'){
+                        echo '<div class="container">
+                                <div class="vaccine-success">
+                                    <h1>Success!</h1>
+                                    <h4>You are provided with a slot for <span>vaccination.</span></h4>
+                                    <h4>Checkout the given information and get vaccinated. Thank you..</h4>
+                                </div>
+                            </div>';
+                    }
+                }
+            }
+            else{
+                echo '<div class="container">
+                        <div class="vaccine-success">
+                            <h1>Nothing!</h1>
+                            <h4>You dont have any new <span>notification.</span></h4>
                         </div>
-                        <div class="form-group">
-                            <input name="aadhar_number" type="tel" class="form-control" id="exampleInputPassword1"
-                                placeholder="Aaadhar number">
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <select name="city" class="form-control" id="exampleFormControlSelect1">
-                                    <option value="" disabled selected>Select City</option>
-                                    <option>Konni</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select name="district" class="form-control">
-                                    <option>Select District</option>
-                                    <option>Pathanamthitta</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Name">
-                        </div>
-                        <div class="form-group">
-                            <input name="phone" type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone">
-                        </div>
-                        <div class="form-group">
-                            <input name="age" type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
-                        </div>
-                        <div class="form-group">
-                            <select name="vaccine" class="form-control" id="exampleFormControlSelect1">
-                                <option>Select Vaccine</option>
-                                <option>Covishield</option>
-                                <option>Covaxin</option>
-                                <option>Sputnik V</option>
-                            </select>
-                        </div>
-                        <input class="btn btn-primary" type="submit">
-                    </form>
-                </div>
-            </div>
+                    </div>';
+            }
+            ?>
             <!--Body End-->
         </div>
     </div>

@@ -34,7 +34,7 @@
                         <a class="nav-link active" aria-current="page" href="#">Vaccine</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Donation</a>
+                        <a class="nav-link active" aria-current="page" href="pages/notification.php">Notification</a>
                     </li>
                 </ul>
             </div>

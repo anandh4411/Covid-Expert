@@ -1,3 +1,4 @@
+<?php $id = $_GET["id"]; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,19 +129,16 @@
                 <div class="stuffs">
                     <div class="row">
                         <div class="col-md-5 covid-case card-tile">
-                            <form method="post" action="../php/vaccination/add-vaccination-centre.php">
-                                <h3>Add Vaccination Centre</h3>
+                            <h4>Slot Allotment</h4>
+                            <form method="post" action="../php/vaccination/add-slot.php">
+                                <input value="<?php echo $id; ?>" name="booking_id" type="number" hidden />
                                 <div class="form-group">
-                                    <input name="centre_id" type="number" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter Centre ID">
+                                    <input name="date" type="date" class="form-control" id="exampleInputPassword1"
+                                        placeholder="Enter Date">
                                 </div>
                                 <div class="form-group">
-                                    <input name="name" type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter Name">
-                                </div>
-                                <div class="form-group">
-                                    <input name="location" type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter Location">
+                                    <input name="time" type="time" class="form-control" id="exampleInputPassword1"
+                                        placeholder="Enter Time">
                                 </div>
                                 <div class="form-group">
                                     <select name="vaccine" class="form-control" id="exampleFormControlSelect1">
@@ -151,86 +149,27 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input name="slots" type="number" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter Number of Slots Available">
+                                    <select name="dose" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected>Select Dose</option>
+                                        <option>1</option>
+                                        <option>2</option>
+                                    </select>
                                 </div>
-                                <input class="btn btn-primary" type="submit">
+                                <div class="form-group">
+                                    <select name="centre" class="form-control" id="exampleFormControlSelect1">
+                                        <option selected>Select Vaccination Centre</option>
+                                        <?php
+                                        include '../php/db.php';
+                                        $query = "SELECT * FROM vaccination_centre";
+                                        $result = mysqli_query($connect, $query);
+                                        while($row = mysqli_fetch_array($result)){
+                                            echo '<option>'.$row["name"].', '.$row["location"].'</option>';
+                                        }
+                                        ?>
+                                    </select>
+                                </div>
+                                <input value="Allot Slot" class="btn btn-primary" type="submit">
                             </form>
-                        </div>
-                        <div style="margin-left: 90px;" class="col-md-5 case-table card-tile"></div>
-
-                        <div class="col-md-8 case-table card-tile">
-                            <h4 style="margin: 20px;">Vaccination Centres</h4>
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Centre ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Location</th>
-                                    <th scope="col">Vaccine</th>
-                                    <th scope="col">Available Slots</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    include '../php/db.php';
-                                    $query = "SELECT * FROM vaccination_centre";
-                                    $result = mysqli_query($connect, $query);
-                                    while($row = mysqli_fetch_array($result)){
-                                        echo '<tr>
-                                                <th scope="row">'.$row["centre_id"].'</th>
-                                                <td>'.$row["name"].'</td>
-                                                <td>'.$row["location"].'</td>
-                                                <td>'.$row["vaccine"].'</td>
-                                                <td>'.$row["slots"].'</td>
-                                                <td><a href="update-vaccination.php?id='.$row["id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Update</a></td>
-                                                <td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0;" class="btn btn-danger">Delete</a></td>
-                                            </tr>';
-                                    }
-                                ?>
-                                </tbody>
-                              </table>
-                        </div>
-
-                        <div class="col-md-11 case-table card-tile">
-                            <h4 style="margin: 20px;">Currently Active Bookings</h4>
-                            <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th scope="col">Id</th>
-                                    <th scope="col">User Id</th>
-                                    <th scope="col">Aadhar Number</th>
-                                    <th scope="col">City</th>
-                                    <th scope="col">District</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Age</th>
-                                    <th scope="col">Vaccine</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    include '../php/db.php';
-                                    $query = "SELECT * FROM vaccine_booking";
-                                    $result = mysqli_query($connect, $query);
-                                    while($row = mysqli_fetch_array($result)){
-                                        echo '<tr>
-                                                <th scope="row">'.$row["id"].'</th>
-                                                <th scope="row">'.$row["user_id"].'</th>
-                                                <td>'.$row["aadhar_number"].'</td>
-                                                <td>'.$row["city"].'</td>
-                                                <td>'.$row["district"].'</td>
-                                                <td>'.$row["name"].'</td>
-                                                <td>'.$row["phone"].'</td>
-                                                <td>'.$row["age"].'</td>
-                                                <td>'.$row["vaccine"].'</td>
-                                                <td><a href="allot-slot.php?id='.$row["id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Slot</a></td>
-                                                <td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
-                                            </tr>';
-                                    }
-                                ?>
-                                </tbody>
-                              </table>
                         </div>
                     </div>
                 </div>
