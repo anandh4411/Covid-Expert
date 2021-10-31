@@ -1,4 +1,4 @@
-<?php $id = $_GET["id"]; ?>
+<?php $id = $_GET["id"]; $user_id = $_GET["user_id"]; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,6 +132,7 @@
                             <h4>Slot Allotment</h4>
                             <form method="post" action="../php/vaccination/add-slot.php">
                                 <input value="<?php echo $id; ?>" name="booking_id" type="number" hidden />
+                                <input value="<?php echo $user_id; ?>" name="user_id" type="number" hidden />
                                 <div class="form-group">
                                     <input name="date" type="date" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Date">

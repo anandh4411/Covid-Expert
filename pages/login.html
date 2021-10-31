@@ -122,53 +122,25 @@
         <div class="col-lg-11">
             <!--Body-->
             <div class="container">
-                <div class="vaccine-form-card" style="width: 25rem; margin-top: 70px;">
-                    <form action="../php/vaccination/book-vaccine.php" method="post">
+                <div class="vaccine-form-card" style="width: 25rem;">
+                    <form action="../php/user/login.php" method="post">
                         <div class="syringe">
-                            <svg class="svg-inline--fa fa-syringe fa-w-16" aria-hidden="true" focusable="false"
-                                data-prefix="fas" data-icon="syringe" role="img" xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 512 512" data-fa-i2svg="">
-                                <path fill="#00ABFF"
-                                    d="M201.5 174.8l55.7 55.8c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0l-55.7-55.8-45.3 45.3 55.8 55.8c3.1 3.1 3.1 8.2 0 11.3l-11.3 11.3c-3.1 3.1-8.2 3.1-11.3 0L111 265.2l-26.4 26.4c-17.3 17.3-25.6 41.1-23 65.4l7.1 63.6L2.3 487c-3.1 3.1-3.1 8.2 0 11.3l11.3 11.3c3.1 3.1 8.2 3.1 11.3 0l66.3-66.3 63.6 7.1c23.9 2.6 47.9-5.4 65.4-23l181.9-181.9-135.7-135.7-64.9 65zm308.2-93.3L430.5 2.3c-3.1-3.1-8.2-3.1-11.3 0l-11.3 11.3c-3.1 3.1-3.1 8.2 0 11.3l28.3 28.3-45.3 45.3-56.6-56.6-17-17c-3.1-3.1-8.2-3.1-11.3 0l-33.9 33.9c-3.1 3.1-3.1 8.2 0 11.3l17 17L424.8 223l17 17c3.1 3.1 8.2 3.1 11.3 0l33.9-34c3.1-3.1 3.1-8.2 0-11.3l-73.5-73.5 45.3-45.3 28.3 28.3c3.1 3.1 8.2 3.1 11.3 0l11.3-11.3c3.1-3.2 3.1-8.2 0-11.4z">
-                                </path>
+                            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="sign-in-alt" class="svg-inline--fa fa-sign-in-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path
+                                    fill="#00ABFF"
+                                    d="M416 448h-84c-6.6 0-12-5.4-12-12v-40c0-6.6 5.4-12 12-12h84c17.7 0 32-14.3 32-32V160c0-17.7-14.3-32-32-32h-84c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h84c53 0 96 43 96 96v192c0 53-43 96-96 96zm-47-201L201 79c-15-15-41-4.5-41 17v96H24c-13.3 0-24 10.7-24 24v96c0 13.3 10.7 24 24 24h136v96c0 21.5 26 32 41 17l168-168c9.3-9.4 9.3-24.6 0-34z"
+                                ></path>
                             </svg>
                         </div>
+                        <h4>Login</h4>
                         <div class="form-group">
-                            <input name="aadhar_number" type="tel" class="form-control" id="exampleInputPassword1"
-                                placeholder="Aaadhar number">
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <select name="city" class="form-control" id="exampleFormControlSelect1">
-                                    <option value="" disabled selected>Select City</option>
-                                    <option>Konni</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select name="district" class="form-control">
-                                    <option>Select District</option>
-                                    <option>Pathanamthitta</option>
-                                </select>
-                            </div>
+                            <input name="phone" type="tel" class="form-control" id="exampleInputPassword1"
+                                placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <input name="name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Name">
+                            <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                         </div>
-                        <div class="form-group">
-                            <input name="phone" type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone">
-                        </div>
-                        <div class="form-group">
-                            <input name="age" type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
-                        </div>
-                        <div class="form-group">
-                            <select name="vaccine" class="form-control" id="exampleFormControlSelect1">
-                                <option>Select Vaccine</option>
-                                <option>Covishield</option>
-                                <option>Covaxin</option>
-                                <option>Sputnik V</option>
-                            </select>
-                        </div>
-                        <input class="btn btn-primary" type="submit">
+                        <input value="Login" class="btn btn-primary" type="submit">
                     </form>
                 </div>
             </div>

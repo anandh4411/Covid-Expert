@@ -223,10 +223,14 @@
                                                 <td>'.$row["name"].'</td>
                                                 <td>'.$row["phone"].'</td>
                                                 <td>'.$row["age"].'</td>
-                                                <td>'.$row["vaccine"].'</td>
-                                                <td><a href="allot-slot.php?id='.$row["id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Slot</a></td>
-                                                <td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
+                                                <td>'.$row["vaccine"].'</td>';
+                                        if($row["alloted"] == 'false'){
+                                            echo '<td><a href="allot-slot.php?id='.$row["id"].'&user_id='.$row["user_id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Slot</a></td>';
+                                        }
+                                        else{
+                                            echo '<td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
                                             </tr>';
+                                        }
                                     }
                                 ?>
                                 </tbody>
