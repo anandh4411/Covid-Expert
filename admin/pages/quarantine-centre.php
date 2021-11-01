@@ -215,11 +215,11 @@
                                                 <td>'.$row["age"].'</td>
                                                 <td>'.$row["quarantine_centre"].'</td>';
                                         if($row["alloted"] == 'false'){
-                                            echo '<td><a href="allot-slot.php?id='.$row["id"].'&user_id='.$row["user_id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Slot</a></td>';
+                                            echo '<td><a href="allot-room.php?id='.$row["id"].'&user_id='.$row["user_id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Room</a></td>';
                                         }
                                         else{
-                                            echo '<td><a href="../php/vaccination/vaccinated.php?id='.$row["id"].'&user_id='.$row["user_id"].'&aadhar='.$row["aadhar_number"].'&city='.$row["city"].'&district='.$row["district"].'&name='.$row["name"].'&phone='.$row["phone"].'&age='.$row["age"].'&vaccine='.$row["vaccine"].'" 
-                                            style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
+                                            echo '<td><a href="../php/quarantine/quarantined.php?id='.$row["id"].'&user_id='.$row["user_id"].'&aadhar='.$row["aadhar_number"].'&city='.$row["city"].'&district='.$row["district"].'&name='.$row["name"].'&phone='.$row["phone"].'&age='.$row["age"].'&quarantine_centre='.$row["quarantine_centre"].'" 
+                                            style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Finished Quarantine</a></td>
                                             </tr>';
                                         }
                                     }
@@ -229,7 +229,7 @@
                         </div>
 
                         <div class="col-md-11 case-table card-tile">
-                            <h4 style="margin: 20px;">Quarantined Individuals</h4>
+                            <h4 style="margin: 20px;">Finished Quarantine</h4>
                             <table class="table">
                                 <thead>
                                   <tr>
