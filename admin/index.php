@@ -132,30 +132,37 @@
                         <div class="col card-tile">
                             <h3 style="margin-left: 20px; color:rgb(0, 171, 255);">Covid Cases</h3>
                             <div style="margin-bottom: 30px !important;" class="row">
-                                <div class="col">
-                                    <div class="col graph-tile">
-                                        <small>Tested</small>
-                                        <h2>1,982</h2>
-                                        <canvas id="tested"></canvas>
-                                    </div>
-                                    <div class="col graph-tile">
-                                        <small>Confirmed</small>
-                                        <h2>674</h2>
-                                        <canvas id="confirmed"></canvas>
-                                    </div>
-                                </div>
-                                <div class="col graph-tile">
-                                    <div class="col">
-                                        <small>Recovery</small>
-                                        <h2>1,437</h2>
-                                        <canvas id="recovery"></canvas>
-                                    </div>
-                                    <div class="col graph-tile">
-                                        <small>Death</small>
-                                        <h2>34</h2>
-                                        <canvas id="death"></canvas>
-                                    </div>
-                                </div>
+                                <?php
+                                    include '../php/db.php';
+                                    $query = "SELECT * FROM covid_cases ORDER BY id DESC LIMIT 0, 1";
+                                    $result = mysqli_query($connect, $query);
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo '<div class="col">
+                                                <div class="col graph-tile">
+                                                    <small>Tested</small>
+                                                    <h2>'.$row["tested"].'</h2>
+                                                    <canvas id="tested"></canvas>
+                                                </div>
+                                                <div class="col graph-tile">
+                                                    <small>Confirmed</small>
+                                                    <h2>'.$row["confirmed"].'</h2>
+                                                    <canvas id="confirmed"></canvas>
+                                                </div>
+                                            </div>
+                                            <div class="col graph-tile">
+                                                <div class="col">
+                                                    <small>Recovery</small>
+                                                    <h2>'.$row["recovery"].'</h2>
+                                                    <canvas id="recovery"></canvas>
+                                                </div>
+                                                <div class="col graph-tile">
+                                                    <small>Death</small>
+                                                    <h2>'.$row["death"].'</h2>
+                                                    <canvas id="death"></canvas>
+                                                </div>
+                                            </div>';
+                                    }
+                                ?>
                             </div>
                             <a  href="pages/covid-cases.php" class="manage-btn">Manage</a>
                             <i class="fas fa-arrow-right"></i>
