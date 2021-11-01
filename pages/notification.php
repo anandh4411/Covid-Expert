@@ -124,14 +124,16 @@
             <!--Body-->
             <?php
             include '../php/db.php';
+            $no_notifiction = 'true';
             $user_id = $_SESSION["user-id"];
             $query = "SELECT * FROM slots WHERE user_id = $user_id";
             $result = mysqli_query($connect, $query);
             if ($result){
                 while($row = mysqli_fetch_array($result)){
+                    $no_notifiction = 'false';
                     echo '<div class="container">
                             <div class="vaccine-success">
-                                <h1>Success!</h1>
+                                <h1>Slot Alloted!</h1>
                                 <h4>You are provided with a slot for <span>vaccination.</span></h4>
                                 <h4>Checkout the given information and get vaccinated. Thank you..</h4>
                                 <div style="margin-top: 40px;" class="col-md-8 case-table card-tile">
@@ -160,7 +162,19 @@
                         </div>';
                 }
             }
-            else{
+            $query2 = "SELECT * FROM vaccinated";
+            $result2 = mysqli_query($connect, $query2);
+            while($row = mysqli_fetch_array($result2)){
+                if($user_id == $row["user_id"]){
+                    $no_notifiction = 'false';
+                    echo '<div class="vaccine-success">
+                            <h1>Vaccinated!</h1>
+                            <h4>Congrats, you have been completed your <span>vaccination.</span></h4>
+                            <h4>Download the <span>certificate.</span> Thank you..</h4>
+                        </div>';
+                }
+            }
+            if($no_notifiction == 'true'){
                 echo '<div class="container">
                         <div class="vaccine-success">
                             <h1>Nothing!</h1>

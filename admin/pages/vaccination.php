@@ -228,9 +228,48 @@
                                             echo '<td><a href="allot-slot.php?id='.$row["id"].'&user_id='.$row["user_id"].'" style="background-color: rgb(0, 171, 255); margin-top: 0;" class="btn btn-primary">Allot Slot</a></td>';
                                         }
                                         else{
-                                            echo '<td><a href="../php/vaccination/delete-vaccination.php?id='.$row["id"].'" style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
+                                            echo '<td><a href="../php/vaccination/vaccinated.php?id='.$row["id"].'&user_id='.$row["user_id"].'&aadhar='.$row["aadhar_number"].'&city='.$row["city"].'&district='.$row["district"].'&name='.$row["name"].'&phone='.$row["phone"].'&age='.$row["age"].'&vaccine='.$row["vaccine"].'" 
+                                            style="margin-top: 0; background-color: rgb(50,205,50);" class="btn btn-success">Vaccinated</a></td>
                                             </tr>';
                                         }
+                                    }
+                                ?>
+                                </tbody>
+                              </table>
+                        </div>
+
+                        <div class="col-md-11 case-table card-tile">
+                            <h4 style="margin: 20px;">Vaccinated Individuals</h4>
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col">Id</th>
+                                    <th scope="col">User Id</th>
+                                    <th scope="col">Aadhar Number</th>
+                                    <th scope="col">City</th>
+                                    <th scope="col">District</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Age</th>
+                                    <th scope="col">Vaccine</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                <?php
+                                    include '../php/db.php';
+                                    $query = "SELECT * FROM vaccinated";
+                                    $result = mysqli_query($connect, $query);
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo '<tr>
+                                                <th scope="row">'.$row["id"].'</th>
+                                                <th scope="row">'.$row["user_id"].'</th>
+                                                <td>'.$row["aadhar_number"].'</td>
+                                                <td>'.$row["city"].'</td>
+                                                <td>'.$row["district"].'</td>
+                                                <td>'.$row["name"].'</td>
+                                                <td>'.$row["phone"].'</td>
+                                                <td>'.$row["age"].'</td>
+                                                <td>'.$row["vaccine"].'</td>';
                                     }
                                 ?>
                                 </tbody>
