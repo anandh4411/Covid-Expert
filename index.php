@@ -173,7 +173,7 @@
                         <div class="row quarantine-book">
                             <h4>Get Quarantined</h4>
                             <small>Book your quarantine centre today.</small>
-                            <a class="btn" href="pages/quarantine-book.html">Book now</a>
+                            <a class="btn" href="pages/quarantine-book.php">Book now</a>
                         </div>
                     </div>
                 </div>

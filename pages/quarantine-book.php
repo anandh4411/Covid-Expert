@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<?php
+session_start();
+echo '<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -47,9 +49,9 @@
             <!--SideBar-->
             <div class="sidebar">
                 <div class="logo-details">
-                    <i class='bx bxl-c-plus-plus icon'></i>
+                    <i class="bx bxl-c-plus-plus icon"></i>
                     <div class="logo_name">Covid Expert</div>
-                    <i class='bx bx-menu' id="btn"><i class="fas fa-virus"></i></i>
+                    <i class="bx bx-menu" id="btn"><i class="fas fa-virus"></i></i>
                 </div>
                 <ul class="nav-list">
                     <li>
@@ -121,9 +123,64 @@
         </div>
         <div class="col-lg-11">
             <!--Body-->
-            <div class="container">
-                <div class="vaccine-form-card" style="width: 25rem;">
-                    <form action="">
+            <div class="container">';
+                if(isset($_SESSION['user-id'])) $user_id = $_SESSION["user-id"];
+                $no_user = 'false';
+                $booked = 'false';
+                $alloted = 'false';
+                $quarantined = 'false';
+                include '../php/db.php'; 
+                if(!isset($user_id)){
+                    $no_user = 'true';
+                }
+                else{
+                    $query = "SELECT * FROM quarantine_booking";
+                    $result = mysqli_query($connect, $query);
+                    while($row = mysqli_fetch_array($result)){
+                        if($user_id == $row["user_id"]) $booked = 'true';
+                        if($row["alloted"] == 'true'){
+                            $booked = 'false';
+                            $alloted = 'true';
+                        }
+                    } 
+                    $query2 = "SELECT * FROM quarantined";
+                    $result2 = mysqli_query($connect, $query2);
+                    while($row = mysqli_fetch_array($result2)){
+                        if($user_id == $row["user_id"]) $quarantined = 'true';
+                    }
+                }
+
+                if($no_user == 'true'){
+                    echo '<div class="vaccine-success">
+                            <h1>Login!</h1>
+                            <h4>You are not <span>logged in.</span></h4>
+                            <h4>If you do not have an account, please signup. Thank you..</h4>
+                        </div>';
+                }
+                elseif($booked == 'true'){
+                    echo '<div class="vaccine-success">
+                            <h1>Booked!</h1>
+                            <h4>You already booked <span>quarantine centre.</span></h4>
+                            <h4>We will inform you when rooms are available. Thank you..</h4>
+                        </div>';
+                }
+                elseif($alloted == 'true'){
+                    echo '<div class="vaccine-success">
+                            <h1>Room Alloted!</h1>
+                            <h4>You are provided with a Room for <span>quarantine.</span></h4>
+                            <h4>Check the notification area. Thank you..</h4>
+                        </div>';
+                }
+                elseif($quarantined == 'true'){
+                    echo '<div class="vaccine-success">
+                            <h1>Quarantined!</h1>
+                            <h4>Congrats, you have been <span>quarantined.</span></h4>
+                            <h4>Thank you..</h4>
+                        </div>';
+                }
+                else{
+                    echo '<div class="vaccine-form-card" style="width: 25rem; margin-top: 75px;">
+                    <form method="post" action="../php/quarantine/book-quarantine.php">
                         <div class="syringe">
                             <svg class="svg-inline--fa fa-house-user fa-w-18" aria-hidden="true" focusable="false"
                                 data-prefix="fas" data-icon="house-user" role="img" xmlns="http://www.w3.org/2000/svg"
@@ -133,42 +190,51 @@
                                 </path>
                             </svg>
                         </div>
+                        <input hidden name="user_id" value="'.$_SESSION["user-id"].'" type="number">
                         <div class="form-group">
-                            <input type="password" class="form-control" id="exampleInputPassword1"
+                            <input name="aadhar_number" type="tel" class="form-control" id="exampleInputPassword1"
                                 placeholder="Aaadhar number">
                         </div>
                         <div class="row">
                             <div class="col">
-                                <select class="form-control">
-                                    <option>Select District</option>
-                                    <option>Pathanamthitta</option>
-                                </select>
-                            </div>
-                            <div class="col">
-                                <select class="form-control" id="exampleFormControlSelect1">
+                                <select name="city" class="form-control" id="exampleFormControlSelect1">
                                     <option value="" disabled selected>Select City</option>
                                     <option>Konni</option>
                                 </select>
                             </div>
+                            <div class="col">
+                                <select name="district" class="form-control">
+                                    <option disabled selected>Select District</option>
+                                    <option>Pathanamthitta</option>
+                                </select>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Phone">
+                            <input name="name" type="text" class="form-control" id="exampleInputPassword1" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
+                            <input name="phone" type="tel" class="form-control" id="exampleInputPassword1" placeholder="Phone">
                         </div>
                         <div class="form-group">
-                            <select class="form-control" id="exampleFormControlSelect1">
-                                <option>Select Quarantine Centre</option>
-                                <option>Konni</option>
-                                <option>Pathanamthitta</option>
-                                <option>Adoor</option>
-                            </select>
+                            <input name="age" type="number" class="form-control" id="exampleInputPassword1" placeholder="Age">
+                        </div>
+                        <div class="form-group">
+                            <select name="quarantine_centre" class="form-control" id="exampleFormControlSelect1">
+                                <option disabled selected>Select Quarantine Centre</option>';
+                                    include '../php/db.php';
+                                    $query = "SELECT * FROM quarantine_centre";
+                                    $result = mysqli_query($connect, $query);
+                                    while($row = mysqli_fetch_array($result)){
+                                        echo '<option>'.$row["name"].', '.$row["location"].'</option>';
+                                    }
+                    echo '</select>
                         </div>
                         <input class="btn btn-primary" type="submit">
                     </form>
-                </div>
-            </div>
+                </div>';
+                }
+
+            echo '</div>
             <!--Body End-->
         </div>
     </div>
@@ -183,4 +249,5 @@
     <script src="../js/main.js"></script>
 </body>
 
-</html>
+</html>';
+?>

@@ -123,7 +123,7 @@ echo '<!DOCTYPE html>
         <div class="col-lg-11">
             <!--Body-->
             <div class="container">';
-                if(!isset($_SESSION["user-id"])) $user_id = $_SESSION["user-id"];
+                if(isset($_SESSION["user-id"])) $user_id = $_SESSION["user-id"];
                 $no_user = 'false';
                 $booked = 'false';
                 $alloted = 'false';
