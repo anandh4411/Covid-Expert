@@ -229,7 +229,7 @@
                         </div>
 
                         <div class="col-md-11 case-table card-tile">
-                            <h4 style="margin: 20px;">Finished Quarantine</h4>
+                            <h4 style="margin: 20px;">Quarantined Individuals</h4>
                             <table class="table">
                                 <thead>
                                   <tr>
